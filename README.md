@@ -1,4 +1,4 @@
-# CSC120-A5: Chugging Along
+# CSC120-A4: Chugging Along
 
 ## Outline
 In this assignment, we'll explore **Encapsulation** by building a virtual Train!
