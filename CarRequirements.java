@@ -1,4 +1,4 @@
-interface Carriage {
+interface CarRequirements {
     
     int getCapacity();
     int seatsRemaining();

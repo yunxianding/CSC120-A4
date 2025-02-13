@@ -1,4 +1,4 @@
-interface Driver {
+interface EngineRequirements {
 
     FuelType getFuelType(); 
     double getMaxFuel();

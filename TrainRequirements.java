@@ -1,4 +1,4 @@
-interface Locomotive {
+interface TrainRequirements {
     
     Engine getEngine();
     Car getCar(int i); 
