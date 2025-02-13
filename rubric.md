@@ -40,7 +40,7 @@ _____ 1 pt: The `Train` class has all expected methods, making use of methods fr
 
 ## General Items:
 
-_____ 4 pts: Programs compile without errors or warnings
+_____ 4 pts: Programs implement interfaces and compile without errors or warnings
 
 _____ 2 pts: Executes fully & consistently without crashing (exception/freeze)
 
