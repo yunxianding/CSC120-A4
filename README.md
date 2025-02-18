@@ -42,7 +42,7 @@ Let's pause a moment to think about the different kinds of relationships we'll w
  ## Step 1: The `Engine` class
  We recommend you start by implementing the `Engine` class. Your `Engine` class will need:
  
-  - to implement `Driver.java`.  
+  - to implement `EngineRequirements.java`.  
   - a `FuelType` attribute to indicate what type of fuel it uses, and `double`s to store the current and maximum fuel levels (along with appropriate accessors for each).
   - a constructor, which takes in initial values for the attributes named above and sets them appropriately
   - a `refuel()` method which will reset the `Engine`'s current fuel level to the maximum, and which doesn't need to `return` anything
@@ -67,7 +67,7 @@ You can use the `main` method defined below as a starting point for testing:
 ## Step 2: the `Car` class
 Next, we'll set to work on the `Car` class. The `Car` class will need:
 
- - to implement `Carriage.java`.
+ - to implement `CarRequirements.java`.
  - an `ArrayList` where it will store the `Passenger`s currently onboard, and an `int` for the `Car`'s maximum capacity (since `ArrayList`s will expand as we add objects, we'll need to manually limit their size)
  - a constructor, which takes in an initial value for the `Car`'s maximum capacity and initializes an appropriately-sized `ArrayList`
  - accessor-like methods `public int getCapacity()` and `public int seatsRemaining()` that return the maximum capacity and remaining seats, respectively
@@ -77,7 +77,7 @@ Next, we'll set to work on the `Car` class. The `Car` class will need:
 As before, consider which of these should be `public` and which should be `private` (potentially with `accessor`s and/or `manipulator`s).
 
 ## Step 3: completing the `Passenger` class
-The `Passenger` class should implement `Person.java`. 
+The `Passenger` class should implement `PassengerRequirements.java`. 
 
 Now that you've got a functional `Car` class, the `Passenger` class can be expanded to use the `Car`'s methods to implement some of its own:
 
@@ -87,7 +87,7 @@ Now that you've got a functional `Car` class, the `Passenger` class can be expan
 ## Step 4: the `Train` class
 Now we're in the home stretch! To assemble your `Train`, you'll need (at minimum):
 
- -  to implement `Locomotive.java`
+ -  to implement `TrainRequirements.java`
  -  an `Engine`
  -  an `ArrayList` to keep track of the `Car`s currently attached
  -  a constructor `Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity)` which will initialize the `Engine` and `Car`s and store them
