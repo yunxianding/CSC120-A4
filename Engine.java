@@ -17,22 +17,46 @@ public class Engine implements EngineRequirements{
         this.maxFuelLevel = maxFuelLevel;
     }
 
+    /**
+     * Accessor for fuel type
+     * @return Engine's fuel type
+     */
     public FuelType getFuelType(){
         return this.f;
     }
 
+    /**
+     * Accessor for current fuel level
+     * @return Engine's current fuel level
+     */
     public double getCurrentFuel(){
         return this.currentFuelLevel;
     }
 
+    /**
+     * Accessor for maximum fuel level
+     * @return Engine's maximum fuel level
+     */
     public double getMaxFuel(){
         return this.maxFuelLevel;
     }
 
+    /**
+     * Refuel the engine to its maximum fuel level
+     */
     public void refuel(){
-        this.currentFuelLevel = this.maxFuelLevel;
+        if (this.currentFuelLevel < this.maxFuelLevel){
+            this.currentFuelLevel = this.maxFuelLevel;
+        }
+        else{
+            System.out.println("Engine is already full.");
+        }
     }
 
+    /**
+     * Decrease the engine's current fuel level by 1
+     * @return true if current fuel level > 0, false otherwise
+     */
     public Boolean go(){
         if(this.currentFuelLevel > 0){
             this.currentFuelLevel -= 1;
@@ -41,6 +65,10 @@ public class Engine implements EngineRequirements{
         return false;
     }
 
+    /**
+     * Returns a string representation of the engine
+     * @return string representation of the engine
+     */
     public String toString(){
         return ("Engine has fuel type:" + this.f + " with current fuel level: " + this.currentFuelLevel + " and maximum fuel level: " + this.maxFuelLevel);
     }
@@ -49,6 +77,23 @@ public class Engine implements EngineRequirements{
         System.out.println(myEngine);
 
         Engine myOtherEngine = new Engine(FuelType.STEAM, 50., 100.);
+        System.out.println(myOtherEngine);
+
+        myEngine.refuel();
+        System.out.println(myEngine);
+
+        myEngine.go();
+        System.out.println(myEngine);
+
+        while (myEngine.currentFuelLevel > 0) {
+            myEngine.go();
+            System.out.println(myEngine);
+        }
+
+        myEngine.refuel();
+        System.out.println(myEngine);
+
+        myEngine.refuel();
         System.out.println(myOtherEngine);
     }
 }
