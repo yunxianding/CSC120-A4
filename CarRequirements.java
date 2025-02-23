@@ -1,5 +1,5 @@
 interface CarRequirements {
-    
+
     int getCapacity();
     int seatsRemaining();
     Boolean addPassenger(Passenger p);
