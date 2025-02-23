@@ -1,6 +1,8 @@
+import java.util.Scanner;
+
 interface PassengerRequirements {
 
-    void boardCar(Car c);
-    void getOffCar(Car c); 
+    void boardCar(Train train, Scanner scanner, Car car);
+    void getOffCar(Car c);
     
 }
