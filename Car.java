@@ -5,14 +5,17 @@ public class Car implements CarRequirements{
     //Attributes
     private ArrayList<Passenger> passengers;
     private int capacity;
-    
+    private Train train; // Reference to the train the car belongs to
+
     /**
      * Constructor for Car
      * @param capacity Car's maximum capacity
+     * @param train Reference to the train the car belongs to
      */
-    public Car(int capacity){
+    public Car(int capacity, Train train){
         this.passengers = new ArrayList<Passenger>();
         this.capacity = capacity;
+        this.train = train;
     }
 
     /**
@@ -68,6 +71,14 @@ public class Car implements CarRequirements{
     }
 
     /**
+     * Accessor for the train reference
+     * @return the train the car belongs to
+     */
+    public Train getTrain(){
+        return this.train;
+    }
+
+    /**
      * Print the manifest of passengers in the car or a message if the car is empty
      */
     public void printManifest(){
@@ -80,33 +91,5 @@ public class Car implements CarRequirements{
                 System.out.println(p.getName());
             }
         }
-    }
-
-    //Main method
-    public static void  main(String[] args){
-        Car a = new Car(4);
-        Passenger p1 = new Passenger("A");
-        Passenger p2 = new Passenger("B");
-        Passenger p3 = new Passenger("C");
-        Passenger p4 = new Passenger("D");
-        Passenger p5 = new Passenger("E");
-
-        //Initial check
-        System.out.println("Car capacity: " + a.getCapacity());
-        System.out.println("Seats remaining: " + a.seatsRemaining());
-        a.printManifest();  
-        
-        //Add and remove passengers
-        p1.boardCar(a);
-        p1.boardCar(a); //This should return false because p1 is already in the car
-        p2.getOffCar(a); //This should return false because p2 is not in the car
-        p2.boardCar(a);
-        p2.getOffCar(a);
-        p2.boardCar(a);
-        p3.boardCar(a);
-        p4.boardCar(a);
-        p5.boardCar(a); //This should return false because the car is full
-        a.printManifest();
-        System.out.println("Seats remaining: " + a.seatsRemaining());
     }
 }
