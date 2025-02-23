@@ -135,9 +135,73 @@ public class Train implements TrainRequirements{
         System.out.println("We hope you had a pleasant ride!");
     }
 
+    /**
+     * Refuel the train's engine
+     */
+    public void refuelEngine() {
+        this.engine.refuel();
+        System.out.println("The train's engine has been refueled. Moving on again...");
+    }
+
+    /**
+     * Make the train go, consuming fuel
+     */
+    public void go() {
+        if (this.engine.go()) {
+            System.out.println("The train is moving.");
+        } 
+        else {
+            System.out.println("The train cannot move because it is out of fuel.");
+        }
+    }
+
+    /**
+     * Simulate the journey of the train(from Ford Hall to Neilson Library)
+     */
+    public void startJourney() {
+        int distance = 80; // Distance from Ford Hall to Neilson Library
+        System.out.println("Departing from Ford Hall to Neilson Library (" + distance + " km)...");
+
+        for (int km = 0; km < distance; km++) {
+            if (!this.engine.go()) {
+                System.out.println("The train cannot move because it is out of fuel. Refueling...");
+                this.refuelEngine();
+            }
+        }
+
+        System.out.println("We have arrived at Neilson Library.");
+        System.out.println("Please pack your belongings and prepare to get off!");
+    }
+
+    /**
+     * Board passengers at the start
+     */
+    public void boardPassengers(Scanner scanner, Passenger... passengers) {
+        System.out.println("Passengers are boarding at Ford Hall...");
+        for (Passenger p : passengers) {
+            if (this.seatsRemaining() > 0) {
+                p.boardCar(this, scanner, null);
+            } else {
+                System.out.println("We are so sorry that Yunxian's train is already full, " + p.getName() + "!");
+                System.out.println("We hope to see you next time!");
+            }
+        }
+    }
+
+    /**
+     * Leave passengers at the destination
+     */
+    public void leavePassengers(Passenger... passengers) {
+        System.out.println("Passengers are leaving at Neilson Library...");
+        for (Passenger p : passengers) {
+            p.getOffCar(null);
+        }
+    }
+
+
     //Main method
     public static void main(String[] args) {
-        Train train = new Train(FuelType.ELECTRIC, 100.0, 3, 4);
+        Train train = new Train(FuelType.ELECTRIC, 50.0, 2, 3);
         Scanner scanner = new Scanner(System.in);
         Passenger p1 = new Passenger("A");
         Passenger p2 = new Passenger("B");
@@ -145,24 +209,24 @@ public class Train implements TrainRequirements{
         Passenger p4 = new Passenger("D");
         Passenger p5 = new Passenger("E");
         Passenger p6 = new Passenger("F");
-
-        //initial check
+        Passenger p7 = new Passenger("G");
+    
+        // Initial check
         train.printManifest();
 
-        // Add and remove passengers to the train
-        p1.boardCar(train, scanner, null);
-        p2.boardCar(train, scanner, null);
-        p2.getOffCar(null); //Get off the current car
-        p3.boardCar(train, scanner, null);
-        p4.boardCar(train, scanner, null);
-        p5.boardCar(train, scanner, null);
-        p6.boardCar(train, scanner, null);
+        // Board passengers at the start
+        train.boardPassengers(scanner, p1, p2, p3, p4, p5, p6, p7);
 
-        // Print the train's manifest
+        // Start the journey
+        train.startJourney();
+
+        // Leave passengers at the destination
+        train.leavePassengers(p1, p2, p3, p4, p5, p6, p7);
+
+        // Final check
         train.printManifest();
 
-        //Close the Scanner
+        // Close the Scanner
         scanner.close();
     }
 }
-
