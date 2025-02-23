@@ -62,7 +62,10 @@ public class Engine implements EngineRequirements{
             this.currentFuelLevel -= 1;
             return true;
         }
-        return false;
+        else{
+            System.out.println("Engine is out of fuel.");
+            return false;
+        }
     }
 
     /**
