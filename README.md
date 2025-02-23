@@ -56,7 +56,7 @@ Remember, OOP is all about deciding which classes are responsible for which part
 You can use the `main` method defined below as a starting point for testing:
  ```
     public static void main(String[] args) {
-        Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
+        Engine myEngine = new Engine(FuelType.ELECTRIC, 0.0, 100.0);
         while (myEngine.go()) {
             System.out.println("Choo choo!");
         }
@@ -90,7 +90,7 @@ Now we're in the home stretch! To assemble your `Train`, you'll need (at minimum
  -  to implement `TrainRequirements.java`
  -  an `Engine`
  -  an `ArrayList` to keep track of the `Car`s currently attached
- -  a constructor `Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity)` which will initialize the `Engine` and `Car`s and store them
+ -  a constructor `Train(FuelType fuelType, double currentFuelLevel, double fuelCapacity, int nCars, int passengerCapacity)` which will initialize the `Engine` and `Car`s and store them
  -  a few accessors: 
      -  `public Engine getEngine()`
      -  `public Car getCar(int i)` to return the `i`th car
