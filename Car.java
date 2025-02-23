@@ -38,7 +38,7 @@ public class Car implements CarRequirements{
      */
     public Boolean addPassenger(Passenger p){
         if (this.passengers.contains(p)){
-            System.out.println("Passenger is already in the car.");
+            System.out.println("Passenger " + p.getName() + " is already in the car.");
             return false;
         }
         if (seatsRemaining() > 0){
@@ -46,7 +46,7 @@ public class Car implements CarRequirements{
             return true;
         }
         else{
-            System.out.println("Car is full.");
+            System.out.println("This car is FULL.");
             return false;
         }
     }
@@ -62,7 +62,7 @@ public class Car implements CarRequirements{
             return true;
         }
         else{
-            System.out.println("Passenger is not in the car.");
+            System.out.println("Passenger " + p.getName() + " is not in the car.");
             return false;
         }
     }
@@ -77,29 +77,11 @@ public class Car implements CarRequirements{
         else{
             System.out.println("Passengers in the car:");
             for (Passenger p : this.passengers){
-                System.out.println(p);
+                System.out.println(p.getName());
             }
         }
     }
 
-     /**
-     * Returns a string representation of the car
-     * @return string representation of the car
-     */
-    public String toString(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("Car capacity: ").append(this.capacity).append("\n");
-        sb.append("Passengers: ");
-        if (this.passengers.size() == 0) {
-            sb.append("This car is EMPTY.");
-        } else {
-            for (Passenger p : this.passengers) {
-                sb.append(p).append(" ");
-            }
-        }
-        return sb.toString();
-    }
-      
     //Main method
     public static void  main(String[] args){
         Car a = new Car(4);
@@ -108,20 +90,23 @@ public class Car implements CarRequirements{
         Passenger p3 = new Passenger("C");
         Passenger p4 = new Passenger("D");
         Passenger p5 = new Passenger("E");
-        a.getCapacity();
-        a.seatsRemaining();
+
+        //Initial check
+        System.out.println("Car capacity: " + a.getCapacity());
+        System.out.println("Seats remaining: " + a.seatsRemaining());
+        a.printManifest();  
+        
+        //Add and remove passengers
+        p1.boardCar(a);
+        p1.boardCar(a); //This should return false because p1 is already in the car
+        p2.getOffCar(a); //This should return false because p2 is not in the car
+        p2.boardCar(a);
+        p2.getOffCar(a);
+        p2.boardCar(a);
+        p3.boardCar(a);
+        p4.boardCar(a);
+        p5.boardCar(a); //This should return false because the car is full
         a.printManifest();
-        a.addPassenger(p1);
-        a.addPassenger(p1);
-        a.addPassenger(p2);
-        a.addPassenger(p3);
-        a.addPassenger(p4);
-        a.seatsRemaining();
-        a.addPassenger(p5);
-        a.printManifest();
-        a.removePassenger(p5);
-        a.removePassenger(p4);
-        a.seatsRemaining();
-        a.printManifest();
+        System.out.println("Seats remaining: " + a.seatsRemaining());
     }
 }
