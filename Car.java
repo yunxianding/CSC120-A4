@@ -3,9 +3,8 @@ import java.util.ArrayList;
 public class Car implements CarRequirements{
     
     //Attributes
-    private ArrayList<Passenger> passengers;
+    private ArrayList<Passenger> passengerList;
     private int capacity;
-    private Train train; // Reference to the train the car belongs to
 
     /**
      * Constructor for Car
@@ -13,9 +12,8 @@ public class Car implements CarRequirements{
      * @param train Reference to the train the car belongs to
      */
     public Car(int capacity, Train train){
-        this.passengers = new ArrayList<Passenger>();
+        this.passengerList = new ArrayList<Passenger>();
         this.capacity = capacity;
-        this.train = train;
     }
 
     /**
@@ -31,7 +29,7 @@ public class Car implements CarRequirements{
      * @return number of seats remaining
      */
     public int seatsRemaining(){
-        return this.capacity - this.passengers.size();
+        return this.capacity - this.passengerList.size();
     }
 
     /**
@@ -40,15 +38,14 @@ public class Car implements CarRequirements{
      * @return true if passenger was added, false otherwise
      */
     public Boolean addPassenger(Passenger p){
-        if (this.passengers.contains(p)){
+        if (this.passengerList.contains(p)){
             System.out.println("Passenger " + p.getName() + " is already in the car.");
             return false;
         }
         if (seatsRemaining() > 0){
-            this.passengers.add(p);
+            this.passengerList.add(p);
             return true;
-        }
-        else{
+        } else{
             System.out.println("This car is FULL.");
             return false;
         }
@@ -60,29 +57,20 @@ public class Car implements CarRequirements{
      * @return true if passenger was removed, false otherwise
      */
     public Boolean removePassenger(Passenger p){
-        if (this.passengers.contains(p)){
-            this.passengers.remove(p);
+        if (this.passengerList.contains(p)){
+            this.passengerList.remove(p);
             return true;
-        }
-        else{
+        } else{
             System.out.println("Passenger " + p.getName() + " is not in the car.");
             return false;
         }
     }
 
     /**
-     * Accessor for the train reference
-     * @return the train the car belongs to
-     */
-    public Train getTrain(){
-        return this.train;
-    }
-
-    /**
      * Print the manifest of passengers in the car or a message if the car is empty
      */
     public void printManifest(){
-        if (this.passengers.size() == 0){
+        if (this.passengerList.size() == 0){
             System.out.println("This car is EMPTY.");
         }
         else{
