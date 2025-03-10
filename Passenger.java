@@ -74,7 +74,6 @@ public class Passenger implements PassengerRequirements {
         }
         if (c != null && c.removePassenger(this)) {
             System.out.println("Passenger " + this.name + " got off the train.");
-            c.getTrain().goodbyeMessage(this); // Call the train's goodbyeMessage method
             this.currentCar = null; // Reset the current car
         } else {
             System.out.println("Passenger " + this.name + " could not get off the train.");
