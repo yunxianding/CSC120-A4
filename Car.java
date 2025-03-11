@@ -9,9 +9,8 @@ public class Car implements CarRequirements{
     /**
      * Constructor for Car
      * @param capacity Car's maximum capacity
-     * @param train Reference to the train the car belongs to
      */
-    public Car(int capacity, Train train){
+    public Car(int capacity){
         this.passengerList = new ArrayList<Passenger>();
         this.capacity = capacity;
     }
@@ -41,8 +40,7 @@ public class Car implements CarRequirements{
         if (this.passengerList.contains(p)){
             System.out.println("Passenger " + p.getName() + " is already in the car.");
             return false;
-        }
-        if (seatsRemaining() > 0){
+        } if (seatsRemaining() > 0){
             this.passengerList.add(p);
             return true;
         } else{
@@ -72,10 +70,9 @@ public class Car implements CarRequirements{
     public void printManifest(){
         if (this.passengerList.size() == 0){
             System.out.println("This car is EMPTY.");
-        }
-        else{
+        } else{
             System.out.println("Passengers in the car:");
-            for (Passenger p : this.passengers){
+            for (Passenger p : this.passengerList){
                 System.out.println(p.getName());
             }
         }
