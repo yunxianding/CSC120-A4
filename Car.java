@@ -37,15 +37,11 @@ public class Car implements CarRequirements{
      * @return true if passenger was added, false otherwise
      */
     public Boolean addPassenger(Passenger p){
-        if (this.passengerList.contains(p)){
-            System.out.println("Passenger " + p.getName() + " is already in the car.");
+        if (this.passengerList.contains(p) || seatsRemaining() == 0){
             return false;
-        } if (seatsRemaining() > 0){
+        } else {
             this.passengerList.add(p);
             return true;
-        } else{
-            System.out.println("This car is FULL.");
-            return false;
         }
     }
 
@@ -59,7 +55,6 @@ public class Car implements CarRequirements{
             this.passengerList.remove(p);
             return true;
         } else{
-            System.out.println("Passenger " + p.getName() + " is not in the car.");
             return false;
         }
     }
