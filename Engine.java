@@ -47,8 +47,7 @@ public class Engine implements EngineRequirements{
     public void refuel(){
         if (this.currentFuelLevel < this.maxFuelLevel){
             this.currentFuelLevel = this.maxFuelLevel;
-        }
-        else{
+        }else{
             System.out.println("Engine is already full.");
         }
     }
@@ -61,8 +60,7 @@ public class Engine implements EngineRequirements{
         if(this.currentFuelLevel > 0){
             this.currentFuelLevel -= 1;
             return true;
-        }
-        else{
+        }else{
             System.out.println("Engine is out of fuel.");
             return false;
         }
@@ -73,10 +71,13 @@ public class Engine implements EngineRequirements{
      * @return string representation of the engine
      */
     public String toString(){
-        return ("Engine has fuel type:" + this.f + " with current fuel level: " + this.currentFuelLevel + " and maximum fuel level: " + this.maxFuelLevel);
+        return ("Engine has fuel type: " + this.f + " with current fuel level: " + this.currentFuelLevel + " and maximum fuel level: " + this.maxFuelLevel);
     }
 
-    //Main method
+    /**
+     * Main method to test Engine class
+     * @param args
+     */
     public static void main(String[] args) {
         Engine myEngine = new Engine(FuelType.ELECTRIC, 0., 100.);
         System.out.println(myEngine);
@@ -92,13 +93,11 @@ public class Engine implements EngineRequirements{
 
         while (myEngine.currentFuelLevel > 0) {
             myEngine.go();
-            System.out.println(myEngine);
         }
 
+        System.out.println(myEngine);
         myEngine.refuel();
         System.out.println(myEngine);
-
         myEngine.refuel();
-        System.out.println(myOtherEngine);
     }
 }
