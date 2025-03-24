@@ -37,7 +37,11 @@ public class Car implements CarRequirements{
      * @return true if passenger was added, false otherwise
      */
     public Boolean addPassenger(Passenger p){
-        if (this.passengerList.contains(p) || seatsRemaining() == 0){
+        for (Passenger passenger : this.passengerList){
+            if (passenger.getName().equals(p.getName())){
+                return false;
+            }
+        } if (seatsRemaining() == 0){
             return false;
         } else {
             this.passengerList.add(p);
